@@ -7,6 +7,7 @@ cp getandsetupnovnc.bash openssl.cnf.patch /home/novnc
 
 chown novnc.novnc /home/novnc/getandsetupnovnc.bash
 
+unset XAUTHORITY
 su - -c /home/novnc/getandsetupnovnc.bash novnc
 
 
