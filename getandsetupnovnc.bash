@@ -19,12 +19,13 @@ file=`ls -t -1 .vnc/*.log | head -1`
 echo file is $file
 port=`grep "TCP port" $file | tr "\040" "\011" | cut -f10`
 echo port is $port
+vport=`echo x${port} | sed s/x59/61/`
+echo novncport is ${vport}
 
 cd noVNC
 
 echo -e "\n\n\n\n\n\n\n\n\n" | openssl req -new -x509 -days 365 -nodes -out self.pem -keyout self.pem
 # -config ../openssl.cnf
 
-./utils/launch.sh --vnc localhost:${port}
+./utils/launch.sh --vnc localhost:${port} --listen ${vport}
 
-bash

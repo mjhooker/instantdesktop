@@ -1,23 +1,28 @@
 #!/bin/bash
 
-useradd -m novnc
+uid=`uuidgen`
+uid=`echo ${uid} | tr -d "-"`
+echo creating ${uid}
 
+useradd -m ${uid}
 
-cp getandsetupnovnc.bash openssl.cnf.patch /home/novnc
+chmod og-r /home/${uid}
 
-chown novnc.novnc /home/novnc/getandsetupnovnc.bash
+chmod og-r /home
+
+cp getandsetupnovnc.bash openssl.cnf.patch /home/$uid
+
+chown ${uid}.${uid} /home/${uid}/getandsetupnovnc.bash
 
 unset XAUTHORITY
-su - -c /home/novnc/getandsetupnovnc.bash novnc
+su - -c /home/${uid}/getandsetupnovnc.bash ${uid}
 
-
-
-echo do your thing
-bash
 
 echo exiting
 
-killall -u novnc
+killall -u ${uid}
 sleep 5
-userdel -r novnc
+killall -u ${uid}
+sleep 5
+userdel -r ${uid}
 
