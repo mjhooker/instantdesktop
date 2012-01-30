@@ -2,6 +2,8 @@
 
 whoami
 
+
+
 mkdir -p ./.vnc
 chmod 700 .vnc
 pwd="vncnovnc"
@@ -26,6 +28,8 @@ cd noVNC
 
 echo -e "\n\n\n\n\n\n\n\n\n" | openssl req -new -x509 -days 365 -nodes -out self.pem -keyout self.pem
 # -config ../openssl.cnf
+
+PATH=/home/~/bin:$PATH
 
 ./utils/launch.sh --vnc localhost:${port} --listen ${vport}
 

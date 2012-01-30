@@ -2,6 +2,8 @@
 
 uid=`uuidgen`
 uid=`echo ${uid} | tr -d "-"`
+myhostip=`./myhostip.bash`
+
 echo creating ${uid}
 
 useradd -m ${uid}
@@ -12,7 +14,10 @@ chmod og-r /home
 
 
 cp -r /root/noVNC /home/${uid}
-chown -R ${uid}.${uid} /home/${uid}/noVNC
+mkdir -p /home/${uid}/bin
+echo -e "#!/bin/bash\necho -n ${myhostip}\n" > /home/${uid}/bin/hostname
+chown -R ${uid}.${uid} /home/${uid}/noVNC /home/${uid}/bin
+chmod +x /home/${uid}/bin/hostname
 
 cp getandsetupnovnc.bash /home/$uid
 
