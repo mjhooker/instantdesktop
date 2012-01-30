@@ -8,7 +8,7 @@ pwd="vncnovnc"
 echo -n $pwd | tightvncpasswd -f > .vnc/passwd
 chmod 600 .vnc/passwd
 
-git clone https://github.com/kanaka/noVNC.git
+#git clone https://github.com/kanaka/noVNC.git
 
 #cp /usr/lib/ssl/openssl.cnf .
 #patch < openssl.cnf.patch

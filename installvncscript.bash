@@ -10,7 +10,11 @@ chmod og-r /home/${uid}
 
 chmod og-r /home
 
-cp getandsetupnovnc.bash openssl.cnf.patch /home/$uid
+
+cp -r /root/noVNC /home/${uid}
+chown -R ${uid}.${uid} /home/${uid}/noVNC
+
+cp getandsetupnovnc.bash /home/$uid
 
 chown ${uid}.${uid} /home/${uid}/getandsetupnovnc.bash
 
